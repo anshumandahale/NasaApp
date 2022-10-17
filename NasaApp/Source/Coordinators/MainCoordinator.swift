@@ -17,7 +17,7 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-        let gridVC = GridViewController.init(viewModel: GridViewModel(), nib: R.nib.gridViewController.name)
+        let gridVC = GridViewController.init(viewModel: GridViewModel(router: self), nib: R.nib.gridViewController.name)
         navigationController.pushViewController(gridVC, animated: true)
     }
 }

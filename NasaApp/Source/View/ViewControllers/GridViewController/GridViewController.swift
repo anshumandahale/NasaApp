@@ -7,11 +7,6 @@
 
 import UIKit
 
-protocol ViewControllerProtocol {
-    
-}
-
-
 class GridViewController<ViewModel: GridVM>: UIViewController {
     let viewModel: ViewModel
     let nib: String

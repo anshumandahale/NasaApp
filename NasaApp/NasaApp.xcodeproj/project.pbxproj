@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B026BD3428FDD8AF00EF51E6 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B026BD3328FDD8AF00EF51E6 /* ViewModel.swift */; };
 		B0A4868928FB14F400A3756B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A4868828FB14F400A3756B /* AppDelegate.swift */; };
 		B0A4868B28FB14F400A3756B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A4868A28FB14F400A3756B /* SceneDelegate.swift */; };
 		B0A486E128FC718B00A3756B /* NasaAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A486E028FC718B00A3756B /* NasaAppTests.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		6122EB92FB813CA3C885FE26 /* Pods_NasaApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NasaApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B026BD3328FDD8AF00EF51E6 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		B0A4868528FB14F400A3756B /* NasaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NasaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0A4868828FB14F400A3756B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0A4868A28FB14F400A3756B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		B026BD3228FDD88800EF51E6 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B026BD3328FDD8AF00EF51E6 /* ViewModel.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		B0A4867C28FB14F400A3756B = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +140,7 @@
 		B0A4870C28FC764700A3756B /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				B026BD3228FDD88800EF51E6 /* Common */,
 				B0A4870D28FC764700A3756B /* Coordinators */,
 				B0A4871028FC764700A3756B /* View */,
 				B0A4871728FC764700A3756B /* Resources */,
@@ -384,7 +395,6 @@
 		};
 		B0A4873228FC80F600A3756B /* Lint */ = {
 			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -411,6 +421,7 @@
 				B0A4871F28FC764700A3756B /* GridViewModel.swift in Sources */,
 				B0A4868928FB14F400A3756B /* AppDelegate.swift in Sources */,
 				B0A4871A28FC764700A3756B /* MainCoordinator.swift in Sources */,
+				B026BD3428FDD8AF00EF51E6 /* ViewModel.swift in Sources */,
 				B0A4872828FC773500A3756B /* R.generated.swift in Sources */,
 				B0A4873128FC7B9F00A3756B /* NasaImageService.swift in Sources */,
 				B0A4871C28FC764700A3756B /* GridViewController.swift in Sources */,
