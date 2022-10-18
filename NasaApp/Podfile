@@ -12,5 +12,6 @@ target 'NasaApp' do
   pod 'RxDataSources', '4.0.1'
   pod 'RxGesture', '3.0.1'
   pod 'RxSwift', '5.1.0'
+  pod 'RxViewController', '1.0.0'
 
 end

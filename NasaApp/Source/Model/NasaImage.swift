@@ -7,33 +7,24 @@
 
 import Foundation
 
-enum MediaType: Codable {
-    case image
+enum MediaType: String, Codable {
+    case image = "image"
 }
 
 struct NasaImage: Codable {
-    let copyright: String
-    let date: Date
-    let explanation: String
-    let hdurl: URL
-    let media_type: MediaType
-    let service_version: String
-    let title: String
-    let url: URL
-}
+    let copyright: String?
+    let date, explanation: String
+    let hdurl: String
+    let mediaType: MediaType
+    let serviceVersion, title: String
+    let url: String
 
-//struct NASAElement: Codable {
-//    let copyright, date, explanation: String
-//    let hdurl: String
-//    let mediaType, serviceVersion, title: String
-//    let url: String
-//
-//    enum CodingKeys: String, CodingKey {
-//        case copyright, date, explanation, hdurl
-//        case mediaType = "media_type"
-//        case serviceVersion = "service_version"
-//        case title, url
-//    }
-//}
+    enum CodingKeys: String, CodingKey {
+        case copyright, date, explanation, hdurl
+        case mediaType = "media_type"
+        case serviceVersion = "service_version"
+        case title, url
+    }
+}
 
 typealias Nasa = [NasaImage]

@@ -11,15 +11,17 @@ import RxCocoa
 import UIKit
 
 protocol GridViewModelInput {
-    var didLoad: Driver<Void> { get set }
-    var tappedOnCell: Driver<Int> { get set }
+    init(
+        didLoad: Driver<Void>,
+        tappedOnCell: Driver<Int>
+    )
 }
 
 protocol GridViewModelOutput {
     var loadImages: Driver<[NasaImage]> { get set }
 }
 
-protocol GridVM: ViewModel where Input: GridViewModelInput, Output: GridViewModelOutput {
+protocol GridVM: ViewModelType where Input: GridViewModelInput, Output: GridViewModelOutput {
     func gridFirstFunction()
 }
 
@@ -35,15 +37,21 @@ class GridViewModel<Coordinator: MainCoordinator>: GridVM {
     let disposeBag = DisposeBag()
     let imagesRelay: BehaviorRelay<[NasaImage]> = BehaviorRelay<[NasaImage]>(value: [])
     private let coordinator: Coordinator
+    private let imageService: NasaImageService
     
-    init(router: MainCoordinator) {
+    init(router: MainCoordinator,
+         imageService: NasaImageService) {
         self.coordinator = router as! Coordinator
+        self.imageService = imageService
     }
     
     func bind(input: Input) -> Output {
         input.didLoad
             .drive(onNext: { _ in
                 print("DidLoad")
+                print("Getting images from Service")
+                guard let path = R.file.dataJson.path() else { return }
+                self.imageService.getGridImages(path: path)
             })
             .disposed(by: disposeBag)
         

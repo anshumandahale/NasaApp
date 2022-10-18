@@ -17,7 +17,8 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-        let gridVC = GridViewController.init(viewModel: GridViewModel(router: self), nib: R.nib.gridViewController.name)
+        let imageService = NasaImageService()
+        let gridVC = GridViewController.init(viewModel: GridViewModel(router: self, imageService: imageService), nib: R.nib.gridViewController.name)
         navigationController.pushViewController(gridVC, animated: true)
     }
 }

@@ -6,17 +6,25 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+
 
 protocol NasaImageServiceProtocol {
+    var images: BehaviorSubject<Nasa> { get }
     func getGridImages(path: String)
 }
 
 class NasaImageService: NasaImageServiceProtocol {
+    var images = BehaviorSubject<Nasa>(value: [])
     func getGridImages(path: String) {
-//        let dataURL = URL(fileURLWithPath: path)
-        guard let fileString = try? String(contentsOfFile: path) else { return }
-        guard let jsonData = try? fileString.data(using: .utf8) else { return }
-        let images = try? JSONDecoder().decode(Nasa.self, from: jsonData)
-        print(images)
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+            let images = try JSONDecoder().decode(Nasa.self, from: data)
+            self.images.onNext(images)
+        } catch {
+            print("Error Exception: \(error)")
+            self.images.onError(error)
+        }
     }
 }
