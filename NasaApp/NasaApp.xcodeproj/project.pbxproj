@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		B026BD3428FDD8AF00EF51E6 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B026BD3328FDD8AF00EF51E6 /* ViewModel.swift */; };
+		B07222312901D275009CF340 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B07222332901D275009CF340 /* Localizable.strings */; };
+		B07222382901D761009CF340 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07222372901D761009CF340 /* DetailViewModel.swift */; };
+		B072223B2901D77B009CF340 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07222392901D77B009CF340 /* DetailViewController.swift */; };
+		B072223C2901D77B009CF340 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B072223A2901D77B009CF340 /* DetailViewController.xib */; };
 		B0A4868928FB14F400A3756B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A4868828FB14F400A3756B /* AppDelegate.swift */; };
 		B0A4868B28FB14F400A3756B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A4868A28FB14F400A3756B /* SceneDelegate.swift */; };
 		B0A486E128FC718B00A3756B /* NasaAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A486E028FC718B00A3756B /* NasaAppTests.swift */; };
@@ -40,6 +44,10 @@
 /* Begin PBXFileReference section */
 		6122EB92FB813CA3C885FE26 /* Pods_NasaApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NasaApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B026BD3328FDD8AF00EF51E6 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		B07222322901D275009CF340 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B07222372901D761009CF340 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		B07222392901D77B009CF340 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		B072223A2901D77B009CF340 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		B0A4868528FB14F400A3756B /* NasaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NasaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0A4868828FB14F400A3756B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0A4868A28FB14F400A3756B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +105,16 @@
 				B026BD3328FDD8AF00EF51E6 /* ViewModel.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		B07222342901D71A009CF340 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				B07222372901D761009CF340 /* DetailViewModel.swift */,
+				B07222392901D77B009CF340 /* DetailViewController.swift */,
+				B072223A2901D77B009CF340 /* DetailViewController.xib */,
+			);
+			path = DetailView;
 			sourceTree = "<group>";
 		};
 		B0A4867C28FB14F400A3756B = {
@@ -180,6 +198,7 @@
 		B0A4871728FC764700A3756B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B07222332901D275009CF340 /* Localizable.strings */,
 				B0A4871828FC764700A3756B /* Assets.xcassets */,
 				B0A4871928FC764700A3756B /* data.json */,
 			);
@@ -197,20 +216,21 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		B0A4872B28FC799E00A3756B /* GridViewController */ = {
+		B0A4872B28FC799E00A3756B /* GridView */ = {
 			isa = PBXGroup;
 			children = (
 				B0A4871128FC764700A3756B /* GridViewController.swift */,
 				B0A4871528FC764700A3756B /* GridViewModel.swift */,
 				B0A4871628FC764700A3756B /* GridViewController.xib */,
 			);
-			path = GridViewController;
+			path = GridView;
 			sourceTree = "<group>";
 		};
 		B0A4872C28FC7A1100A3756B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B0A4872B28FC799E00A3756B /* GridViewController */,
+				B07222342901D71A009CF340 /* DetailView */,
+				B0A4872B28FC799E00A3756B /* GridView */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -317,6 +337,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0A4871E28FC764700A3756B /* GridCollectionCell.xib in Resources */,
+				B07222312901D275009CF340 /* Localizable.strings in Resources */,
+				B072223C2901D77B009CF340 /* DetailViewController.xib in Resources */,
 				B0A4872128FC764700A3756B /* Assets.xcassets in Resources */,
 				B0A4872228FC764700A3756B /* data.json in Resources */,
 				B0A4872628FC767000A3756B /* LaunchScreen.storyboard in Resources */,
@@ -418,6 +440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B072223B2901D77B009CF340 /* DetailViewController.swift in Sources */,
 				B0A4871F28FC764700A3756B /* GridViewModel.swift in Sources */,
 				B0A4868928FB14F400A3756B /* AppDelegate.swift in Sources */,
 				B0A4871A28FC764700A3756B /* MainCoordinator.swift in Sources */,
@@ -426,6 +449,7 @@
 				B0A4873128FC7B9F00A3756B /* NasaImageService.swift in Sources */,
 				B0A4871C28FC764700A3756B /* GridViewController.swift in Sources */,
 				B0A4872E28FC7B7100A3756B /* NasaImage.swift in Sources */,
+				B07222382901D761009CF340 /* DetailViewModel.swift in Sources */,
 				B0A4871B28FC764700A3756B /* Coordinator.swift in Sources */,
 				B0A4871D28FC764700A3756B /* GridCollectionCell.swift in Sources */,
 				B0A4868B28FB14F400A3756B /* SceneDelegate.swift in Sources */,
@@ -451,6 +475,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		B07222332901D275009CF340 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B07222322901D275009CF340 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		B0A4872428FC767000A3756B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

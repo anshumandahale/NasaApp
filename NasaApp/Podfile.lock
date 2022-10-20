@@ -19,6 +19,9 @@ PODS:
   - RxViewController (1.0.0):
     - RxCocoa (~> 5.0)
     - RxSwift (~> 5.0)
+  - SDWebImage (5.13.4):
+    - SDWebImage/Core (= 5.13.4)
+  - SDWebImage/Core (5.13.4)
   - SwiftLint (0.49.1)
 
 DEPENDENCIES:
@@ -28,6 +31,7 @@ DEPENDENCIES:
   - RxGesture (= 3.0.1)
   - RxSwift (= 5.1.0)
   - RxViewController (= 1.0.0)
+  - SDWebImage (~> 5.0)
   - SwiftLint
 
 SPEC REPOS:
@@ -41,6 +45,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - RxViewController
+    - SDWebImage
     - SwiftLint
 
 SPEC CHECKSUMS:
@@ -53,8 +58,9 @@ SPEC CHECKSUMS:
   RxRelay: 5a18c2eb2d68326ebaf0112f80d837ae41b92b97
   RxSwift: ad5874f24bb0dbffd1e9bb8443604e3578796c7a
   RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
+  SDWebImage: e5cc87bf736e60f49592f307bdf9e157189298a3
   SwiftLint: 32ee33ded0636d0905ef6911b2b67bbaeeedafa5
 
-PODFILE CHECKSUM: 0c467e9215fc1dcb58396dcee5d6c6e0d0419179
+PODFILE CHECKSUM: 577eb8e4d0d2e8dda6eff6033f6444da5f06d6f1
 
 COCOAPODS: 1.11.3

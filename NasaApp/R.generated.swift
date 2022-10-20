@@ -130,22 +130,14 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 2 files.
+  /// This `R.file` struct is generated, and contains static references to 1 files.
   struct file {
     /// Resource file `data.json`.
     static let dataJson = Rswift.FileResource(bundle: R.hostingBundle, name: "data", pathExtension: "json")
-    /// Resource file `data2.json`.
-    static let data2Json = Rswift.FileResource(bundle: R.hostingBundle, name: "data2", pathExtension: "json")
 
     /// `bundle.url(forResource: "data", withExtension: "json")`
     static func dataJson(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.dataJson
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "data2", withExtension: "json")`
-    static func data2Json(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.data2Json
       return fileResource.bundle.url(forResource: fileResource)
     }
 
@@ -220,6 +212,36 @@ struct R: Rswift.Validatable {
   struct reuseIdentifier {
     /// Reuse identifier `gridCell`.
     static let gridCell: Rswift.ReuseIdentifier<GridCollectionCell> = Rswift.ReuseIdentifier(identifier: "gridCell")
+
+    fileprivate init() {}
+  }
+
+  /// This `R.string` struct is generated, and contains static references to 1 localization tables.
+  struct string {
+    /// This `R.string.localizable` struct is generated, and contains static references to 1 localization keys.
+    struct localizable {
+      /// en translation: NASA Gallery
+      ///
+      /// Locales: en
+      static let gridViewTitle = Rswift.StringResource(key: "gridViewTitle", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+
+      /// en translation: NASA Gallery
+      ///
+      /// Locales: en
+      static func gridViewTitle(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("gridViewTitle", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "gridViewTitle"
+        }
+
+        return NSLocalizedString("gridViewTitle", bundle: bundle, comment: "")
+      }
+
+      fileprivate init() {}
+    }
 
     fileprivate init() {}
   }

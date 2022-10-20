@@ -8,7 +8,12 @@
 import Foundation
 import UIKit
 
-class MainCoordinator: Coordinator {
+protocol MainRoutable {
+    func showDetails(image: NasaImage)
+}
+
+class MainCoordinator: NSObject, Coordinator, MainRoutable {
+    
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     
@@ -20,5 +25,9 @@ class MainCoordinator: Coordinator {
         let imageService = NasaImageService()
         let gridVC = GridViewController.init(viewModel: GridViewModel(router: self, imageService: imageService), nib: R.nib.gridViewController.name)
         navigationController.pushViewController(gridVC, animated: true)
+    }
+    
+    func showDetails(image: NasaImage) {
+        
     }
 }

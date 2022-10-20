@@ -9,11 +9,12 @@ import Foundation
 import RxSwift
 import RxCocoa
 import UIKit
+//import XCTest
 
 protocol GridViewModelInput {
     init(
         didLoad: Driver<Void>,
-        tappedOnCell: Driver<Int>
+        tappedOnCell: Driver<NasaImage?>
     )
 }
 
@@ -25,10 +26,10 @@ protocol GridVM: ViewModelType where Input: GridViewModelInput, Output: GridView
     func gridFirstFunction()
 }
 
-class GridViewModel<Coordinator: MainCoordinator>: GridVM {
+class GridViewModel<Router: MainRoutable>: GridVM {
     struct Input: GridViewModelInput {
         var didLoad: Driver<Void>
-        var tappedOnCell: Driver<Int>
+        var tappedOnCell: Driver<NasaImage?>
     }
     struct Output: GridViewModelOutput {
         var loadImages: Driver<[NasaImage]>
@@ -36,28 +37,34 @@ class GridViewModel<Coordinator: MainCoordinator>: GridVM {
     
     let disposeBag = DisposeBag()
     let imagesRelay: BehaviorRelay<[NasaImage]> = BehaviorRelay<[NasaImage]>(value: [])
-    private let coordinator: Coordinator
+    private let router: Router
     private let imageService: NasaImageService
     
-    init(router: MainCoordinator,
+    init(router: Router,
          imageService: NasaImageService) {
-        self.coordinator = router as! Coordinator
+        self.router = router 
         self.imageService = imageService
     }
     
     func bind(input: Input) -> Output {
         input.didLoad
             .drive(onNext: { _ in
-                print("DidLoad")
-                print("Getting images from Service")
                 guard let path = R.file.dataJson.path() else { return }
                 self.imageService.getGridImages(path: path)
             })
             .disposed(by: disposeBag)
         
+        imageService.images.asDriver(onErrorJustReturn: [])
+            .drive(onNext: { images in
+                self.imagesRelay.accept(images)
+            })
+            .disposed(by: disposeBag)
+        
         input.tappedOnCell
-            .drive(onNext: { index in
-                print("User tapped on Index: \(index)")
+            .compactMap({$0})
+            .drive(onNext: { nasaImage in
+//                guard let nasaImage = nasaImage else { return }
+                print("User tapped on Index: \(nasaImage.title)")
             })
             .disposed(by: disposeBag)
         

@@ -11,20 +11,26 @@ import RxCocoa
 
 
 protocol NasaImageServiceProtocol {
-    var images: BehaviorSubject<Nasa> { get }
+    var images: Driver<Nasa> { get }
     func getGridImages(path: String)
 }
 
 class NasaImageService: NasaImageServiceProtocol {
-    var images = BehaviorSubject<Nasa>(value: [])
+    var images: Driver<Nasa> {
+        imagesRelay.asDriver().compactMap({$0})
+    }
+    private let imagesRelay = BehaviorRelay<Nasa?>(value: nil)
     func getGridImages(path: String) {
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
             let images = try JSONDecoder().decode(Nasa.self, from: data)
-            self.images.onNext(images)
+            if images.count > 0 {
+                self.imagesRelay.accept(images)
+            } else {
+                self.imagesRelay.accept(nil)
+            }
         } catch {
-            print("Error Exception: \(error)")
-            self.images.onError(error)
+            self.imagesRelay.accept(nil)
         }
     }
 }
