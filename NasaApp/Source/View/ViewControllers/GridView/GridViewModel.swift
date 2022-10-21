@@ -63,8 +63,7 @@ class GridViewModel<Router: MainRoutable>: GridVM {
         input.tappedOnCell
             .compactMap({$0})
             .drive(onNext: { nasaImage in
-//                guard let nasaImage = nasaImage else { return }
-                print("User tapped on Index: \(nasaImage.title)")
+                self.router.showDetails(image: nasaImage)
             })
             .disposed(by: disposeBag)
         

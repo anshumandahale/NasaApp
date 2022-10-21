@@ -28,6 +28,9 @@
 		B0A4872828FC773500A3756B /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A4872728FC773500A3756B /* R.generated.swift */; };
 		B0A4872E28FC7B7100A3756B /* NasaImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A4872D28FC7B7100A3756B /* NasaImage.swift */; };
 		B0A4873128FC7B9F00A3756B /* NasaImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A4873028FC7B9F00A3756B /* NasaImageService.swift */; };
+		B0B8C20F290292BA00B4F61B /* GridViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B8C20E290292BA00B4F61B /* GridViewModelTest.swift */; };
+		B0B8C2112902933300B4F61B /* MockMainRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B8C2102902933300B4F61B /* MockMainRoutable.swift */; };
+		BD4B0378FEF7E754A584ED18 /* libPods-NasaAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D22E81A020353E7540F75582 /* libPods-NasaAppTests.a */; };
 		CA91604A758C5E8F24386EF4 /* Pods_NasaApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6122EB92FB813CA3C885FE26 /* Pods_NasaApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		37C2395FF769B9CEC10095B4 /* Pods-NasaAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NasaAppTests.release.xcconfig"; path = "Target Support Files/Pods-NasaAppTests/Pods-NasaAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		6122EB92FB813CA3C885FE26 /* Pods_NasaApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NasaApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		76B71AEC871C76FD27ACA7D0 /* Pods-NasaAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NasaAppTests.debug.xcconfig"; path = "Target Support Files/Pods-NasaAppTests/Pods-NasaAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B026BD3328FDD8AF00EF51E6 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		B07222322901D275009CF340 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B07222372901D761009CF340 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -67,6 +72,9 @@
 		B0A4872728FC773500A3756B /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		B0A4872D28FC7B7100A3756B /* NasaImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImage.swift; sourceTree = "<group>"; };
 		B0A4873028FC7B9F00A3756B /* NasaImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImageService.swift; sourceTree = "<group>"; };
+		B0B8C20E290292BA00B4F61B /* GridViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewModelTest.swift; sourceTree = "<group>"; };
+		B0B8C2102902933300B4F61B /* MockMainRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMainRoutable.swift; sourceTree = "<group>"; };
+		D22E81A020353E7540F75582 /* libPods-NasaAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NasaAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E17C9B67923D7D69923D637A /* Pods-NasaApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NasaApp.debug.xcconfig"; path = "Target Support Files/Pods-NasaApp/Pods-NasaApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F11EC8118FF483DC7E3026ED /* Pods-NasaApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NasaApp.release.xcconfig"; path = "Target Support Files/Pods-NasaApp/Pods-NasaApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD4B0378FEF7E754A584ED18 /* libPods-NasaAppTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +104,8 @@
 			children = (
 				E17C9B67923D7D69923D637A /* Pods-NasaApp.debug.xcconfig */,
 				F11EC8118FF483DC7E3026ED /* Pods-NasaApp.release.xcconfig */,
+				76B71AEC871C76FD27ACA7D0 /* Pods-NasaAppTests.debug.xcconfig */,
+				37C2395FF769B9CEC10095B4 /* Pods-NasaAppTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -151,6 +162,8 @@
 			isa = PBXGroup;
 			children = (
 				B0A486E028FC718B00A3756B /* NasaAppTests.swift */,
+				B0B8C20E290292BA00B4F61B /* GridViewModelTest.swift */,
+				B0B8C2102902933300B4F61B /* MockMainRoutable.swift */,
 			);
 			path = NasaAppTests;
 			sourceTree = "<group>";
@@ -158,12 +171,12 @@
 		B0A4870C28FC764700A3756B /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				B0C2719D29028F1800454636 /* Service */,
 				B026BD3228FDD88800EF51E6 /* Common */,
 				B0A4870D28FC764700A3756B /* Coordinators */,
 				B0A4871028FC764700A3756B /* View */,
 				B0A4871728FC764700A3756B /* Resources */,
 				B0A4872F28FC7B7B00A3756B /* Model */,
-				B0A4873028FC7B9F00A3756B /* NasaImageService.swift */,
 			);
 			path = Source;
 			sourceTree = SOURCE_ROOT;
@@ -219,8 +232,8 @@
 		B0A4872B28FC799E00A3756B /* GridView */ = {
 			isa = PBXGroup;
 			children = (
-				B0A4871128FC764700A3756B /* GridViewController.swift */,
 				B0A4871528FC764700A3756B /* GridViewModel.swift */,
+				B0A4871128FC764700A3756B /* GridViewController.swift */,
 				B0A4871628FC764700A3756B /* GridViewController.xib */,
 			);
 			path = GridView;
@@ -243,10 +256,19 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		B0C2719D29028F1800454636 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				B0A4873028FC7B9F00A3756B /* NasaImageService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		C8A5CFE7CC216C0044AE3861 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				6122EB92FB813CA3C885FE26 /* Pods_NasaApp.framework */,
+				D22E81A020353E7540F75582 /* libPods-NasaAppTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -279,6 +301,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B0A486E428FC718B00A3756B /* Build configuration list for PBXNativeTarget "NasaAppTests" */;
 			buildPhases = (
+				DA7515BF5AF67339B16CABA3 /* [CP] Check Pods Manifest.lock */,
 				B0A486DA28FC718B00A3756B /* Sources */,
 				B0A486DB28FC718B00A3756B /* Frameworks */,
 				B0A486DC28FC718B00A3756B /* Resources */,
@@ -433,6 +456,28 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nexport PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
+		DA7515BF5AF67339B16CABA3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NasaAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -460,7 +505,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0B8C20F290292BA00B4F61B /* GridViewModelTest.swift in Sources */,
 				B0A486E128FC718B00A3756B /* NasaAppTests.swift in Sources */,
+				B0B8C2112902933300B4F61B /* MockMainRoutable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -672,14 +719,20 @@
 		};
 		B0A486E528FC718B00A3756B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76B71AEC871C76FD27ACA7D0 /* Pods-NasaAppTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.anshuman.NasaAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -689,14 +742,19 @@
 		};
 		B0A486E628FC718B00A3756B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37C2395FF769B9CEC10095B4 /* Pods-NasaAppTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.anshuman.NasaAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

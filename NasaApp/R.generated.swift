@@ -174,12 +174,22 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 2 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 3 nibs.
   struct nib {
+    /// Nib `DetailViewController`.
+    static let detailViewController = _R.nib._DetailViewController()
     /// Nib `GridCollectionCell`.
     static let gridCollectionCell = _R.nib._GridCollectionCell()
     /// Nib `GridViewController`.
     static let gridViewController = _R.nib._GridViewController()
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "DetailViewController", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.detailViewController) instead")
+    static func detailViewController(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.detailViewController)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UINib(name: "GridCollectionCell", in: bundle)`
@@ -196,6 +206,10 @@ struct R: Rswift.Validatable {
       return UIKit.UINib(resource: R.nib.gridViewController)
     }
     #endif
+
+    static func detailViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.detailViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
 
     static func gridCollectionCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> GridCollectionCell? {
       return R.nib.gridCollectionCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? GridCollectionCell
@@ -268,6 +282,17 @@ struct _R: Rswift.Validatable {
 
   #if os(iOS) || os(tvOS)
   struct nib {
+    struct _DetailViewController: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "DetailViewController"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      fileprivate init() {}
+    }
+
     struct _GridCollectionCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
       typealias ReusableType = GridCollectionCell
 
