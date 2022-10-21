@@ -9,9 +9,8 @@ import Foundation
 @testable import NasaApp
 
 class MockMainRouter: MainRoutable {
-    
     var calledRoute: CalledRoute?
-    func showDetails(image: NasaImage) {
+    func showDetails(imageIndex: Int) {
         calledRoute = .detailView
     }
     

@@ -25,18 +25,18 @@ class GridViewModelTest: XCTestCase {
     
     struct MockInput: GridViewModelInput {
         let didLoad: Driver<Void>
-        let tappedOnCell: Driver<NasaImage?>
+        let tappedOnCell: Driver<Int>
         
         let mockDidLoadSubject = PublishSubject<Void>()
-        let mockCellTappedSubject = PublishSubject<NasaImage?>()
+        let mockCellTappedSubject = PublishSubject<Int>()
         
         init() {
             didLoad = mockDidLoadSubject.asDriver(onErrorJustReturn: ())
-            tappedOnCell = mockCellTappedSubject.asDriver(onErrorJustReturn: nil)
+            tappedOnCell = mockCellTappedSubject.asDriver(onErrorJustReturn: 0)
         }
         
         init(didLoad: Driver<Void>,
-             tappedOnCell: Driver<NasaImage?>
+             tappedOnCell: Driver<Int>
         ) {
             self.didLoad = didLoad
             self.tappedOnCell = tappedOnCell
@@ -68,17 +68,7 @@ class GridViewModelTest: XCTestCase {
     func testThatAfterTappingGridImageDetailViewIsOpened() {
         XCTAssertNil(mockRouter.calledRoute)
         
-        mockInput.mockCellTappedSubject.onNext(getMockNasaImage())
+        mockInput.mockCellTappedSubject.onNext(1)
         XCTAssertEqual(mockRouter.calledRoute, .detailView)
-    }
-    func getMockNasaImage() -> NasaImage {
-        NasaImage(copyright: "Copyright",
-                  date: "2022-10-21",
-                  explanation: "Explaination",
-                  hdurl: "HDURL",
-                  mediaType: .image,
-                  serviceVersion: "v1",
-                  title: "Title",
-                  url: "URL")
     }
 }
