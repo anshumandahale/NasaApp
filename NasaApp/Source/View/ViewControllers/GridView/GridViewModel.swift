@@ -14,12 +14,12 @@ import UIKit
 protocol GridViewModelInput {
     init(
         didLoad: Driver<Void>,
-        tappedOnCell: Driver<NasaImage?>
+        tappedOnCell: Driver<Int>
     )
 }
 
 protocol GridViewModelOutput {
-    var loadImages: Driver<[NasaImage]> { get set }
+    var loadImages: Driver<[NasaImage]> { get }
 }
 
 protocol GridVM: ViewModelType where Input: GridViewModelInput, Output: GridViewModelOutput {
@@ -29,7 +29,7 @@ protocol GridVM: ViewModelType where Input: GridViewModelInput, Output: GridView
 class GridViewModel<Router: MainRoutable>: GridVM {
     struct Input: GridViewModelInput {
         var didLoad: Driver<Void>
-        var tappedOnCell: Driver<NasaImage?>
+        var tappedOnCell: Driver<Int>
     }
     struct Output: GridViewModelOutput {
         var loadImages: Driver<[NasaImage]>
@@ -61,9 +61,8 @@ class GridViewModel<Router: MainRoutable>: GridVM {
             .disposed(by: disposeBag)
         
         input.tappedOnCell
-            .compactMap({$0})
-            .drive(onNext: { nasaImage in
-                self.router.showDetails(image: nasaImage)
+            .drive(onNext: { index in
+                self.router.showDetails(imageIndex: index)
             })
             .disposed(by: disposeBag)
         

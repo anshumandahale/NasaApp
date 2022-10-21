@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol MainRoutable {
-    func showDetails(image: NasaImage)
+    func showDetails(imageIndex: Int)
 }
 
 class MainCoordinator: NSObject, Coordinator, MainRoutable {
@@ -27,7 +27,7 @@ class MainCoordinator: NSObject, Coordinator, MainRoutable {
         navigationController.pushViewController(gridVC, animated: true)
     }
     
-    func showDetails(image: NasaImage) {
+    func showDetails(imageIndex: Int) {
         
     }
 }

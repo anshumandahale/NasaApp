@@ -15,7 +15,7 @@ class GridViewController<ViewModel: GridVM>: UIViewController, ViewType {
     
     @IBOutlet weak var collectionView: UICollectionView!
     private let disposeBag = DisposeBag()
-    private let imageSelected = BehaviorSubject<NasaImage?>(value: nil)
+    private let imageSelected = BehaviorSubject<Int>(value: 0)
     private var nasaImages = Nasa()
     
     let viewModel: ViewModel
@@ -43,7 +43,7 @@ class GridViewController<ViewModel: GridVM>: UIViewController, ViewType {
     func input() -> ViewModel.Input {
         ViewModel.Input(
             didLoad: rx.viewDidLoad.asDriver(),
-            tappedOnCell: imageSelected.asDriver(onErrorJustReturn: nil)
+            tappedOnCell: imageSelected.asDriver(onErrorJustReturn: 0)
         )
     }
     
@@ -63,11 +63,11 @@ class GridViewController<ViewModel: GridVM>: UIViewController, ViewType {
         
         collectionView
             .rx
-            .modelSelected(NasaImage.self)
+            .itemSelected
             .asDriver()
-            .drive(onNext: { [weak self] model in
+            .drive(onNext: { [weak self] indexPath in
                 guard let self = self else { return }
-                self.imageSelected.onNext(model)
+                self.imageSelected.onNext(indexPath.row)
             })
             .disposed(by: disposeBag)
     }
