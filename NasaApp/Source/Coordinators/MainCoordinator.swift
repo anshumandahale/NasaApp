@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol MainRoutable {
-    func showDetails(imageIndex: Int)
+    func showDetails(images: Nasa, selectedImageIndex: Int)
 }
 
 class MainCoordinator: NSObject, Coordinator, MainRoutable {
@@ -27,7 +27,12 @@ class MainCoordinator: NSObject, Coordinator, MainRoutable {
         navigationController.pushViewController(gridVC, animated: true)
     }
     
-    func showDetails(imageIndex: Int) {
-        
+    func showDetails(images: Nasa, selectedImageIndex: Int) {
+        let detailVC = DetailViewController.init(viewModel: DetailViewModel(router: self, images: images, selectedImageIndex: selectedImageIndex), nib: R.nib.detailViewController.name)
+        navigationController.pushViewController(detailVC, animated: true)
+    }
+    
+    func popToGridVC() {
+        navigationController.popToRootViewController(animated: true)
     }
 }

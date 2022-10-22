@@ -60,9 +60,10 @@ class GridViewModel<Router: MainRoutable>: GridVM {
             })
             .disposed(by: disposeBag)
         
-        input.tappedOnCell
-            .drive(onNext: { index in
-                self.router.showDetails(imageIndex: index)
+        Driver.combineLatest(input.tappedOnCell, imagesRelay.asDriver())
+            .skip(2)
+            .drive(onNext: { index, images in
+                self.router.showDetails(images: images, selectedImageIndex: index)
             })
             .disposed(by: disposeBag)
         

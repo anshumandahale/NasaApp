@@ -13,14 +13,13 @@ import RxSwift
 protocol DetailViewModelInput {
     init(
         willAppear: Driver<Bool>,
-        backButtonTapped: Driver<Void>,
-        showNextImage: Driver<Void>,
-        showPreviousImage: Driver<Void>
+        backButtonTapped: Driver<Void>
     )
 }
 
 protocol DetailViewModelOutput {
-    var showImageDetail: Driver<NasaImage> { get }
+    var images: Driver<Nasa> { get }
+    var selectedIndex: Driver<Int> { get }
 }
 
 protocol DetailVM: ViewModelType where Input: DetailViewModelInput, Output: DetailViewModelOutput {
@@ -31,17 +30,17 @@ class DetailViewModel<Router>: DetailVM {
     struct Input: DetailViewModelInput {
         let willAppear: Driver<Bool>
         let backButtonTapped: Driver<Void>
-        let showNextImage: Driver<Void>
-        let showPreviousImage: Driver<Void>
     }
     struct Output: DetailViewModelOutput {
-        var showImageDetail: Driver<NasaImage>
+        var images: Driver<Nasa>
+        var selectedIndex: Driver<Int>
     }
     private let router: Router
     private let nasaImages: Nasa
     private var selectedImageIndex: Int
     private let disposeBag = DisposeBag()
-    private let selectedImageSubject = PublishSubject<NasaImage>()
+    private let imagesSubject = PublishSubject<Nasa>()
+    private let selectedImageIndexSubject = PublishSubject<Int>()
     
     init(router: Router,
          images: Nasa,
@@ -54,42 +53,14 @@ class DetailViewModel<Router>: DetailVM {
     func bind(input: Input) -> Output {
         input.willAppear
             .drive(onNext: { _ in
-                print("viewWillAppear")
-                self.selectedImageSubject.onNext(self.nasaImages[self.selectedImageIndex])
+                self.imagesSubject.onNext(self.nasaImages)
+                self.selectedImageIndexSubject.onNext(self.selectedImageIndex)
             })
             .disposed(by: disposeBag)
         
-        input.showNextImage
-            .drive(onNext: { _ in
-                self.selectedImageSubject.onNext(self.nasaImages[self.getImageIndexForEvent(event: .next)])
-            })
-            .disposed(by: disposeBag)
-        
-        input.showPreviousImage
-            .drive(onNext: { _ in
-                self.selectedImageSubject.onNext(self.nasaImages[self.getImageIndexForEvent(event: .previous)])
-            })
-            .disposed(by: disposeBag)
-        
-        return Output(showImageDetail: selectedImageSubject.asDriver(onErrorJustReturn: self.nasaImages[selectedImageIndex]))
+        return Output(
+            images: imagesSubject.asDriver(onErrorJustReturn: self.nasaImages),
+            selectedIndex: selectedImageIndexSubject.asDriver(onErrorJustReturn: 0)
+        )
     }
-    
-    private func getImageIndexForEvent(event: SlidingOptions) -> Int {
-        switch event {
-        case .next:
-            if selectedImageIndex != nasaImages.count {
-                selectedImageIndex += 1
-            }
-        case .previous:
-            if selectedImageIndex != 0 {
-                selectedImageIndex -= 1
-            }
-        }
-        return selectedImageIndex
-    }
-}
-
-private enum SlidingOptions {
-    case next
-    case previous
 }

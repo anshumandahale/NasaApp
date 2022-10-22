@@ -36,6 +36,9 @@ class GridViewController<ViewModel: GridVM>: UIViewController, ViewType {
         output.loadImages
             .drive(onNext: { images in
                 self.nasaImages = images
+                if images.count > 0 {
+                    self.bindDataToCollectionView()
+                }
             })
             .disposed(by: disposeBag)
     }
@@ -51,32 +54,16 @@ class GridViewController<ViewModel: GridVM>: UIViewController, ViewType {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = false
         self.title = R.string.localizable.gridViewTitle()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        commonInit()
-    }
-    
-    func commonInit() {
         
-        self.initCollectionView()
-        
-        collectionView
-            .rx
-            .itemSelected
-            .asDriver()
-            .drive(onNext: { [weak self] indexPath in
-                guard let self = self else { return }
-                self.imageSelected.onNext(indexPath.row)
-            })
-            .disposed(by: disposeBag)
+        initCollectionView()
+        setCollectionViewDelegate()
+        bindDataToCollectionView()
     }
     
     private func initCollectionView() {
         let nib = UINib(nibName: R.nib.gridCollectionCell.name, bundle: Bundle.main)
         collectionView.register(nib, forCellWithReuseIdentifier: R.reuseIdentifier.gridCell.identifier)
         setFlowLayoutForCollectionView()
-        bindDataToCollectionView()
     }
     private func setFlowLayoutForCollectionView() {
         let flowLayout = UICollectionViewFlowLayout()
@@ -90,10 +77,23 @@ class GridViewController<ViewModel: GridVM>: UIViewController, ViewType {
     
     private func bindDataToCollectionView() {
         let pageTypeData = Observable<Nasa>.of(nasaImages)
+        collectionView.dataSource = nil
         pageTypeData.bind(to:collectionView.rx.items(cellIdentifier: R.reuseIdentifier.gridCell.identifier, cellType: GridCollectionCell.self)) { indexPath, nasaImage, cell in
             cell.configureForImage(nasaImage: nasaImage)
         }
         .disposed(by: disposeBag)
+    }
+    
+    private func setCollectionViewDelegate() {
+        collectionView
+            .rx
+            .itemSelected
+            .asDriver()
+            .drive(onNext: { [weak self] indexPath in
+                guard let self = self else { return }
+                self.imageSelected.onNext(indexPath.row)
+            })
+            .disposed(by: disposeBag)
     }
 }
 
