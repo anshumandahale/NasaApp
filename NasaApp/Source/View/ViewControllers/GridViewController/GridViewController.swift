@@ -34,10 +34,10 @@ class GridViewController<ViewModel: GridVM>: UIViewController, ViewType {
     
     func bind(output: ViewModel.Output) {
         output.loadImages
-            .drive(onNext: { images in
-                self.nasaImages = images
+            .drive(onNext: { [weak self] images in
+                self?.nasaImages = images
                 if images.count > 0 {
-                    self.bindDataToCollectionView()
+                    self?.bindDataToCollectionView()
                 }
             })
             .disposed(by: disposeBag)

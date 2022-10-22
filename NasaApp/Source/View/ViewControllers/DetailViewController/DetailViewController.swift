@@ -34,9 +34,9 @@ class DetailViewController<ViewModel: DetailVM>: UIViewController, LCInfiniteScr
     
     func bind(output: ViewModel.Output) {
         Driver.combineLatest(output.images, output.selectedIndex)
-            .drive(onNext: { images, selectedIndex in
-                self.selectedImageIndex = selectedIndex
-                self.images = images
+            .drive(onNext: { [weak self] images, selectedIndex in
+                self?.selectedImageIndex = selectedIndex
+                self?.images = images
             })
             .disposed(by: disposeBag)
     }

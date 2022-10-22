@@ -52,15 +52,16 @@ class DetailViewModel<Router: MainRoutable>: DetailVM {
     
     func bind(input: Input) -> Output {
         input.willAppear
-            .drive(onNext: { _ in
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
                 self.imagesSubject.onNext(self.nasaImages)
                 self.selectedImageIndexSubject.onNext(self.selectedImageIndex)
             })
             .disposed(by: disposeBag)
         
         input.backButtonTapped
-            .drive(onNext: { _ in
-                self.router.popToGridVC()
+            .drive(onNext: { [weak self] _ in
+                self?.router.popToGridVC()
             })
             .disposed(by: disposeBag)
         

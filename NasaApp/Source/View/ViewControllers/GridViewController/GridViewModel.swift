@@ -48,22 +48,22 @@ class GridViewModel<Router: MainRoutable>: GridVM {
     
     func bind(input: Input) -> Output {
         input.didLoad
-            .drive(onNext: { _ in
+            .drive(onNext: { [weak self] _ in
                 guard let path = R.file.dataJson.path() else { return }
-                self.imageService.getGridImages(path: path)
+                self?.imageService.getGridImages(path: path)
             })
             .disposed(by: disposeBag)
         
         imageService.images.asDriver(onErrorJustReturn: [])
-            .drive(onNext: { images in
-                self.imagesRelay.accept(images)
+            .drive(onNext: { [weak self] images in
+                self?.imagesRelay.accept(images)
             })
             .disposed(by: disposeBag)
         
         Driver.combineLatest(input.tappedOnCell, imagesRelay.asDriver())
             .skip(2)
-            .drive(onNext: { index, images in
-                self.router.showDetails(images: images, selectedImageIndex: index)
+            .drive(onNext: { [weak self] index, images in
+                self?.router.showDetails(images: images, selectedImageIndex: index)
             })
             .disposed(by: disposeBag)
         
