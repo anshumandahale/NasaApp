@@ -15,6 +15,7 @@ class DetailViewController<ViewModel: DetailVM>: UIViewController, LCInfiniteScr
     var selectedImageIndex: Int = 0
     let viewModel: ViewModel
     let nib: String
+    let newBackButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: nil)
     
     var infiniteScrollView: LCInfiniteScrollView?
     let backActionSubject = PublishSubject<Void>()
@@ -43,8 +44,13 @@ class DetailViewController<ViewModel: DetailVM>: UIViewController, LCInfiniteScr
     func input() -> ViewModel.Input {
         ViewModel.Input(
             willAppear: rx.viewWillAppear.asDriver(),
-            backButtonTapped: backActionSubject.asDriver(onErrorJustReturn: ())
-            )
+            backButtonTapped: self.newBackButton.rx.tap.asDriver()
+        )
+    }
+    
+    override func viewDidLoad() {
+        self.navigationItem.hidesBackButton = true
+        self.navigationItem.leftBarButtonItem = newBackButton
     }
     
     override func viewDidAppear(_ animated: Bool) {

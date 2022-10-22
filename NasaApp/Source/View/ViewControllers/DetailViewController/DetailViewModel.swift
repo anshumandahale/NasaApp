@@ -26,7 +26,7 @@ protocol DetailVM: ViewModelType where Input: DetailViewModelInput, Output: Deta
     
 }
 
-class DetailViewModel<Router>: DetailVM {
+class DetailViewModel<Router: MainRoutable>: DetailVM {
     struct Input: DetailViewModelInput {
         let willAppear: Driver<Bool>
         let backButtonTapped: Driver<Void>
@@ -55,6 +55,12 @@ class DetailViewModel<Router>: DetailVM {
             .drive(onNext: { _ in
                 self.imagesSubject.onNext(self.nasaImages)
                 self.selectedImageIndexSubject.onNext(self.selectedImageIndex)
+            })
+            .disposed(by: disposeBag)
+        
+        input.backButtonTapped
+            .drive(onNext: { _ in
+                self.router.popToGridVC()
             })
             .disposed(by: disposeBag)
         

@@ -10,6 +10,7 @@ import UIKit
 
 protocol MainRoutable {
     func showDetails(images: Nasa, selectedImageIndex: Int)
+    func popToGridVC()
 }
 
 class MainCoordinator: NSObject, Coordinator, MainRoutable {
