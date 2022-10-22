@@ -30,6 +30,8 @@
 		B0A4873128FC7B9F00A3756B /* NasaImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A4873028FC7B9F00A3756B /* NasaImageService.swift */; };
 		B0B8C20F290292BA00B4F61B /* GridViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B8C20E290292BA00B4F61B /* GridViewModelTest.swift */; };
 		B0B8C2112902933300B4F61B /* MockMainRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B8C2102902933300B4F61B /* MockMainRoutable.swift */; };
+		B0B8C215290324F500B4F61B /* DetailContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B8C214290324F500B4F61B /* DetailContainerView.swift */; };
+		B0B8C2172903251600B4F61B /* DetailContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0B8C2162903251600B4F61B /* DetailContainerView.xib */; };
 		BD4B0378FEF7E754A584ED18 /* libPods-NasaAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D22E81A020353E7540F75582 /* libPods-NasaAppTests.a */; };
 		CA91604A758C5E8F24386EF4 /* Pods_NasaApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6122EB92FB813CA3C885FE26 /* Pods_NasaApp.framework */; };
 /* End PBXBuildFile section */
@@ -74,6 +76,8 @@
 		B0A4873028FC7B9F00A3756B /* NasaImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImageService.swift; sourceTree = "<group>"; };
 		B0B8C20E290292BA00B4F61B /* GridViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewModelTest.swift; sourceTree = "<group>"; };
 		B0B8C2102902933300B4F61B /* MockMainRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMainRoutable.swift; sourceTree = "<group>"; };
+		B0B8C214290324F500B4F61B /* DetailContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContainerView.swift; sourceTree = "<group>"; };
+		B0B8C2162903251600B4F61B /* DetailContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailContainerView.xib; sourceTree = "<group>"; };
 		D22E81A020353E7540F75582 /* libPods-NasaAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NasaAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E17C9B67923D7D69923D637A /* Pods-NasaApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NasaApp.debug.xcconfig"; path = "Target Support Files/Pods-NasaApp/Pods-NasaApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F11EC8118FF483DC7E3026ED /* Pods-NasaApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NasaApp.release.xcconfig"; path = "Target Support Files/Pods-NasaApp/Pods-NasaApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -118,14 +122,15 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		B07222342901D71A009CF340 /* DetailView */ = {
+		B07222342901D71A009CF340 /* DetailViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B0B8C213290324D400B4F61B /* DetailContainerView */,
 				B07222372901D761009CF340 /* DetailViewModel.swift */,
 				B07222392901D77B009CF340 /* DetailViewController.swift */,
 				B072223A2901D77B009CF340 /* DetailViewController.xib */,
 			);
-			path = DetailView;
+			path = DetailViewController;
 			sourceTree = "<group>";
 		};
 		B0A4867C28FB14F400A3756B = {
@@ -229,21 +234,21 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		B0A4872B28FC799E00A3756B /* GridView */ = {
+		B0A4872B28FC799E00A3756B /* GridViewController */ = {
 			isa = PBXGroup;
 			children = (
 				B0A4871528FC764700A3756B /* GridViewModel.swift */,
 				B0A4871128FC764700A3756B /* GridViewController.swift */,
 				B0A4871628FC764700A3756B /* GridViewController.xib */,
 			);
-			path = GridView;
+			path = GridViewController;
 			sourceTree = "<group>";
 		};
 		B0A4872C28FC7A1100A3756B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B07222342901D71A009CF340 /* DetailView */,
-				B0A4872B28FC799E00A3756B /* GridView */,
+				B07222342901D71A009CF340 /* DetailViewController */,
+				B0A4872B28FC799E00A3756B /* GridViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -254,6 +259,15 @@
 				B0A4872D28FC7B7100A3756B /* NasaImage.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B0B8C213290324D400B4F61B /* DetailContainerView */ = {
+			isa = PBXGroup;
+			children = (
+				B0B8C214290324F500B4F61B /* DetailContainerView.swift */,
+				B0B8C2162903251600B4F61B /* DetailContainerView.xib */,
+			);
+			path = DetailContainerView;
 			sourceTree = "<group>";
 		};
 		B0C2719D29028F1800454636 /* Service */ = {
@@ -360,6 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0A4871E28FC764700A3756B /* GridCollectionCell.xib in Resources */,
+				B0B8C2172903251600B4F61B /* DetailContainerView.xib in Resources */,
 				B07222312901D275009CF340 /* Localizable.strings in Resources */,
 				B072223C2901D77B009CF340 /* DetailViewController.xib in Resources */,
 				B0A4872128FC764700A3756B /* Assets.xcassets in Resources */,
@@ -492,6 +507,7 @@
 				B026BD3428FDD8AF00EF51E6 /* ViewModel.swift in Sources */,
 				B0A4872828FC773500A3756B /* R.generated.swift in Sources */,
 				B0A4873128FC7B9F00A3756B /* NasaImageService.swift in Sources */,
+				B0B8C215290324F500B4F61B /* DetailContainerView.swift in Sources */,
 				B0A4871C28FC764700A3756B /* GridViewController.swift in Sources */,
 				B0A4872E28FC7B7100A3756B /* NasaImage.swift in Sources */,
 				B07222382901D761009CF340 /* DetailViewModel.swift in Sources */,

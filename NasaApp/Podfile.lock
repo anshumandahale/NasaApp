@@ -26,6 +26,7 @@ PODS:
   - SDWebImage (5.13.4):
     - SDWebImage/Core (= 5.13.4)
   - SDWebImage/Core (5.13.4)
+  - SwiftInfiniteScrollView (1.1.0)
   - SwiftLint (0.49.1)
 
 DEPENDENCIES:
@@ -38,6 +39,7 @@ DEPENDENCIES:
   - RxTest (= 5.0.1)
   - RxViewController (= 1.0.0)
   - SDWebImage (~> 5.0)
+  - SwiftInfiniteScrollView
   - SwiftLint
 
 SPEC REPOS:
@@ -54,6 +56,7 @@ SPEC REPOS:
     - RxTest
     - RxViewController
     - SDWebImage
+    - SwiftInfiniteScrollView
     - SwiftLint
 
 SPEC CHECKSUMS:
@@ -69,8 +72,9 @@ SPEC CHECKSUMS:
   RxTest: 0132f952a61da82d5233abedaa559df91e5330e5
   RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
   SDWebImage: e5cc87bf736e60f49592f307bdf9e157189298a3
+  SwiftInfiniteScrollView: 998afdb7a4c22298f86e5214557110f14a689a4f
   SwiftLint: 32ee33ded0636d0905ef6911b2b67bbaeeedafa5
 
-PODFILE CHECKSUM: a7544159391c1c7a74cae21108b63749e54e5ce6
+PODFILE CHECKSUM: 391ccc75af03e49c80c642644422f3fcefee263a
 
 COCOAPODS: 1.11.3

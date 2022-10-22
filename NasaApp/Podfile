@@ -16,6 +16,7 @@ target 'NasaApp' do
   pod 'RxViewController', '1.0.0'
   
   pod 'SDWebImage', '~> 5.0'
+  pod 'SwiftInfiniteScrollView'
 
 end
 

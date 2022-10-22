@@ -174,14 +174,24 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 3 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 4 nibs.
   struct nib {
+    /// Nib `DetailContainerView`.
+    static let detailContainerView = _R.nib._DetailContainerView()
     /// Nib `DetailViewController`.
     static let detailViewController = _R.nib._DetailViewController()
     /// Nib `GridCollectionCell`.
     static let gridCollectionCell = _R.nib._GridCollectionCell()
     /// Nib `GridViewController`.
     static let gridViewController = _R.nib._GridViewController()
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "DetailContainerView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.detailContainerView) instead")
+    static func detailContainerView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.detailContainerView)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UINib(name: "DetailViewController", in: bundle)`
@@ -206,6 +216,10 @@ struct R: Rswift.Validatable {
       return UIKit.UINib(resource: R.nib.gridViewController)
     }
     #endif
+
+    static func detailContainerView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> DetailContainerView? {
+      return R.nib.detailContainerView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? DetailContainerView
+    }
 
     static func detailViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.detailViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
@@ -282,6 +296,17 @@ struct _R: Rswift.Validatable {
 
   #if os(iOS) || os(tvOS)
   struct nib {
+    struct _DetailContainerView: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "DetailContainerView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> DetailContainerView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? DetailContainerView
+      }
+
+      fileprivate init() {}
+    }
+
     struct _DetailViewController: Rswift.NibResourceType {
       let bundle = R.hostingBundle
       let name = "DetailViewController"
